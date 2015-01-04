@@ -1,15 +1,25 @@
 package com.sibisoft.northstar.tdd;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class TestCaseTest {
 	
+	WasRun test = null;
+	
 	@Test
 	public void testRunning() {
-		WasRun test = new WasRun("testMethod");
-		assertFalse(test.wasRun);
 		test.run();
-		assertTrue(test.wasRun);
+		assert(test.wasRun);
 	}
+	
+	@Before
+	public void testSetup() {
+		test = new WasRun("testMethod");
+		test.run();
+		assertTrue(test.wasSetup);
+	}
+	
 }

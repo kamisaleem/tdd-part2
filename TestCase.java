@@ -2,6 +2,8 @@ package com.sibisoft.northstar.tdd;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.junit.Before;
+
 public class TestCase {
 
 	String name;
@@ -10,7 +12,13 @@ public class TestCase {
 		this.name = name;
 	}
 	
+	@Before
+	public void setup() {
+		WasRun test = new WasRun("testMethod");
+	}
+	
 	public void run() {
+		setup();
 		try {
 			this.getClass().getMethod(this.name).invoke(this);
 		} catch (NoSuchMethodException ex) {
