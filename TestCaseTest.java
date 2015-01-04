@@ -32,4 +32,12 @@ public class TestCaseTest {
 		//assertEquals("1 run, 1 failed", result.summary());
 	}
 	
+	@Test
+	public void testFailedResultFormatting() {
+		result = new TestResult();
+		result.testStarted();
+		result.testFailed();
+		assertEquals("1 run, 1 failed", result.summary());
+	}
+	
 }
