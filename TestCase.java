@@ -12,12 +12,15 @@ public class TestCase {
 		this.name = name;
 	}
 	
-	@Before
 	public void setup() {
 		WasRun test = new WasRun("testMethod");
 	}
 	
-	public void run() {
+	public TestResult run() {
+		
+		TestResult result = new TestResult();
+		result.testStarted();
+		
 		setup();
 		try {
 			this.getClass().getMethod(this.name).invoke(this);
@@ -28,5 +31,16 @@ public class TestCase {
 		} catch (IllegalAccessException ex) {
 			System.out.println("No Such Method "+ex.toString());
 		}
+		
+		this.tearDown();
+		
+		return result;
 	}
+	
+
+	
+	public void tearDown() {
+		
+	}
+
 }
